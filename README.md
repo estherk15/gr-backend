@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +23,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+# gr-backend
+Backend for final project
+>>>>>>> 51d621819781d884716c071d8134272c1d407a5f
