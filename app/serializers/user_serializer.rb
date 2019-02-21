@@ -3,5 +3,5 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :lists
   # has_many :books, through: :lists
-  has_many :responses
+  # has_many :responses
 end
