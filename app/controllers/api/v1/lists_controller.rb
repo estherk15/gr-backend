@@ -1,4 +1,4 @@
-class Api::V1::ListController < ApplicationController
+class Api::V1::ListsController < ApplicationController
   before_action :find_list, only: [:update, :destroy]
 
   def index

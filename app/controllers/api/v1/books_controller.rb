@@ -1,9 +1,18 @@
-class Api::V1::BookController < ApplicationController
+class Api::V1::BooksController < ApplicationController
   before_action :find_book, only: [:update, :destroy]
 
   def index
     @books = Book.all
     render json: @books
+    # Eventually I want books to be free of all duplicates, I just want one copy of the book, assuming I can have copies of the same book in many lists.
+    # @books = Book.all
+    # unqi_book = []
+    # @books.each do |book|
+    #   if !unqi_book.map(|b| b.name).include?(book.name)
+    #     unqi_book.push(book)
+    #   end
+    # end
+    # render json: unqi_book
   end
 
   def create

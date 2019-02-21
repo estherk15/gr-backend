@@ -1,4 +1,4 @@
-class Api::V1::ResponseController < ApplicationController
+class Api::V1::ResponsesController < ApplicationController
   before_action :find_response, only: [:update, :destroy]
 
   def index
