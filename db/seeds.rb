@@ -14,12 +14,17 @@ List.destroy_all
 List.create(user_id: u.id, title: "Want to Read", description: "Reading Wishlist")
 List.create(user_id: u.id, title: "Currently Reading", description: "Books I am currenlty reading")
 
-# Book.destroy_all
+Book.destroy_all
+20.times do
+  Book.create(title: Faker::Book.title, author: Faker::Book.author, genre: Faker::Book.genre, cover_url: Faker::Internet.url)
+end
+
+BookList.destroy_all
+5.times do
+  BookList.create(list_id: List.all.sample.id, book_id: Book.all.sample.id)
+end
+
+# Response.destroy_all
 # 20.times do
-#   Book.create(title: Faker::Book.title, author: Faker::Book.author, genre: Faker::Book.genre, cover_url: Faker::Lorem.paragraphs(3, true).join('\n'))
-# end
-#
-# BookList.destroy_all
-# 5.times do
-#   BookList.create(list_id: List.all.sample.id, book_id: Book.all.sample.id)
+#   Response.create(book_id: Book.all.sample.id, user_id: u.id, title: Faker::Lorem.sentence(5), content: Faker::Lorem.sentence(10))
 # end
