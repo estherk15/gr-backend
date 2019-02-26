@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 # u = User.create(name: ENV['USER'])
-u = User.create(name: "Esther", bio: "Let's do this!")
+u = User.create(username: "Esther", password: '123')
 # b = Book.find
 
 List.destroy_all
@@ -24,7 +24,7 @@ BookList.destroy_all
   BookList.create(list_id: List.all.sample.id, book_id: Book.all.sample.id)
 end
 
-# Response.destroy_all
-# 20.times do
-#   Response.create(book_id: Book.all.sample.id, user_id: u.id, title: Faker::Lorem.sentence(5), content: Faker::Lorem.sentence(10))
-# end
+Response.destroy_all
+20.times do
+  Response.create(book_id: Book.all.sample.id, user_id: u.id, title: Faker::Lorem.sentence(5), content: Faker::Lorem.sentence(10))
+end

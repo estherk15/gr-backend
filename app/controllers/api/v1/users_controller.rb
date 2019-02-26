@@ -1,9 +1,13 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :find_user, only: [:update, :destroy]
+  before_action :find_user, only: [:update, :show, :destroy]
 
   def index
     @users = User.all
     render json: @users
+  end
+
+  def show
+    render json: @user
   end
 
   def create
@@ -19,9 +23,34 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user.destroy
-    redirect_to api_v1_users_path
+  # def login
+  #   @user = User.all.find_by(username: params[:username])
+  #    #Search User db to see if a user exists
+  #
+  #   if @user.nil? #is the entered username in the db?
+  #     render json: {error: "Username not found"} #if not, render the error
+  #   else
+  #     if @user.authenticate(params[:password]) #if they are in the db check their password
+  #       render json: @user
+  #     else
+  #       render json: {error: "Your password is invalid"}
+  #     end
+  #   end
+  # end
+  def login
+  
+    @user = User.all.find_by(username: params[:username])
+     #Search User db to see if a user exists
+
+    if @user.nil? #is the entered username in the db?
+      render json: {error: "Username not found"} #if not, render the error
+    else
+      if @user.password == params[:password] #if they are in the db check their password
+        render json: @user
+      else
+        render json: {error: "Your password is invalid"}
+      end
+    end
   end
 
   private
@@ -31,7 +60,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :bio)
+    params.require(:user).permit(:username, :password)
   end
 
 end
