@@ -12,7 +12,7 @@ u = User.create(username: "Esther", password: '123')
 
 List.destroy_all
 List.create(user_id: u.id, title: "Want to Read", description: "Reading Wishlist")
-List.create(user_id: u.id, title: "Currently Reading", description: "Books I am currenlty reading")
+List.create(user_id: u.id, title: "Currently Reading", description: "Books I am currently reading")
 
 Book.destroy_all
 20.times do
