@@ -13,18 +13,19 @@ u = User.create(username: "Esther", password: '123')
 List.destroy_all
 List.create(user_id: u.id, title: "Want to Read", description: "Reading Wishlist")
 List.create(user_id: u.id, title: "Currently Reading", description: "Books I am currently reading")
+List.create(user_id: u.id, title: "Read", description: "Already Read")
 
 Book.destroy_all
-20.times do
-  Book.create(title: Faker::Book.title, author: Faker::Book.author, genre: Faker::Book.genre, cover_url: Faker::Internet.url)
-end
+# 20.times do
+#   Book.create(title: Faker::Book.title, authors: [Faker::Book.author], genre: Faker::Book.genre, cover_url: Faker::Internet.url)
+# end
 
 BookList.destroy_all
-5.times do
-  BookList.create(list_id: List.all.sample.id, book_id: Book.all.sample.id)
-end
+# 5.times do
+#   BookList.create(list_id: List.all.sample.id, book_id: Book.all.sample.id)
+# end
 
 Response.destroy_all
-20.times do
-  Response.create(book_id: Book.all.sample.id, user_id: u.id, title: Faker::Lorem.sentence(5), content: Faker::Lorem.sentence(10))
-end
+# 20.times do
+#   Response.create(book_id: Book.all.sample.id, user_id: u.id, title: Faker::Lorem.sentence(5), content: Faker::Lorem.sentence(10))
+# end

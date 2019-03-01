@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :sessions, only: [:new, :create, :destroy]
 
       post '/login', to: 'users#login'
+      patch '/add_book', to: 'lists#add_book'
     end
   end
 end

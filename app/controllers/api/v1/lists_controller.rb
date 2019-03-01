@@ -24,11 +24,18 @@ class Api::V1::ListsController < ApplicationController
     redirect_to api_v1_lists_path
   end
 
-  def changeList
-    bookId = book_params["book_id"].to_i
-    @book = Book.find(bookId)
-    @list.books << @tag
+  def add_book
+    @list = List.all.find_by(:title == params[:title])
+    @book = Book.all.find_or_create_by(google_id: params[:google_id]) do |book| #find a book by unique google id, if it doesn't exist, create it with the following attributes/params.
+      book.title = params[:title]
+      book.authors = params[:authors]
+      book.cover_url = params[:cover_url]
+    end
+    @list.books << @book
+    render json: @list
+    # if the book exists in their db, remove it from their former list and add it to the new list
   end
+
 
   private
 

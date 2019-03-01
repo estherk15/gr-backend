@@ -26,8 +26,7 @@ ActiveRecord::Schema.define(version: 2019_02_20_203524) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.string "author"
-    t.string "genre"
+    t.string "authors", default: [], array: true
     t.string "cover_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

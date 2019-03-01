@@ -38,7 +38,7 @@ class Api::V1::UsersController < ApplicationController
   #   end
   # end
   def login
-  
+
     @user = User.all.find_by(username: params[:username])
      #Search User db to see if a user exists
 
@@ -52,6 +52,8 @@ class Api::V1::UsersController < ApplicationController
       end
     end
   end
+
+# create a route that accept id of user and return an array of lists with nested books
 
   private
 
