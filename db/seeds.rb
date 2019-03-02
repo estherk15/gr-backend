@@ -11,8 +11,8 @@ u = User.create(username: "Esther", password: '123')
 # b = Book.find
 
 List.destroy_all
-List.create(user_id: u.id, title: "Want to Read", description: "Reading Wishlist")
 List.create(user_id: u.id, title: "Currently Reading", description: "Books I am currently reading")
+List.create(user_id: u.id, title: "Want to Read", description: "Reading Wishlist")
 List.create(user_id: u.id, title: "Read", description: "Already Read")
 
 Book.destroy_all

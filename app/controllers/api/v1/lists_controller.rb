@@ -25,7 +25,8 @@ class Api::V1::ListsController < ApplicationController
   end
 
   def add_book
-    @list = List.all.find_by(:title == params[:title])
+    # byebug
+    @list = List.all.find_by(:id == params[:id])
     @book = Book.all.find_or_create_by(google_id: params[:google_id]) do |book| #find a book by unique google id, if it doesn't exist, create it with the following attributes/params.
       book.title = params[:title]
       book.authors = params[:authors]
@@ -33,7 +34,8 @@ class Api::V1::ListsController < ApplicationController
     end
     @list.books << @book
     render json: @list
-    # if the book exists in their db, remove it from their former list and add it to the new list
+
+    # STRETCH: if the book exists in their db, remove it from their former list and add it to the new list
   end
 
 
@@ -43,7 +45,7 @@ class Api::V1::ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
-  def user_params
-    params.require(:list).permit(:title, :description)
+  def list_params
+    params.require(:list).permit(:title)
   end
 end

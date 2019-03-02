@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_02_20_203524) do
   end
 
   create_table "books", force: :cascade do |t|
+    t.string "google_id"
     t.string "title"
     t.string "authors", default: [], array: true
     t.string "cover_url"
