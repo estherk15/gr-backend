@@ -10,33 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_20_203524) do
+ActiveRecord::Schema.define(version: 2019_03_03_030329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "book_lists", force: :cascade do |t|
-    t.bigint "book_id"
-    t.bigint "list_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_book_lists_on_book_id"
-    t.index ["list_id"], name: "index_book_lists_on_list_id"
-  end
 
   create_table "books", force: :cascade do |t|
     t.string "google_id"
     t.string "title"
     t.string "authors", default: [], array: true
     t.string "cover_url"
+    t.bigint "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_books_on_list_id"
   end
 
   create_table "lists", force: :cascade do |t|
-    t.bigint "user_id"
     t.string "title"
-    t.text "description"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lists_on_user_id"
@@ -60,7 +52,6 @@ ActiveRecord::Schema.define(version: 2019_02_20_203524) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "book_lists", "books"
-  add_foreign_key "book_lists", "lists"
+  add_foreign_key "books", "lists"
   add_foreign_key "lists", "users"
 end
