@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:index, :show, :create, :update]
-      resources :lists, only: [:index, :create, :update, :destroy]
+      resources :lists, only: [:index, :show, :create, :update, :destroy]
       resources :books, only: [:index, :create, :update, :destroy]
       resources :responses, only: [:index, :create, :update, :destroy]
       resources :sessions, only: [:new, :create, :destroy]
 
       post '/login', to: 'users#login'
       patch '/add_book', to: 'lists#add_book'
+      patch '/change_list', to: 'lists#change_list'
+      patch '/remove_book', to: 'lists#remove_book'
     end
   end
 end

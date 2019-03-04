@@ -1,9 +1,13 @@
 class Api::V1::ListsController < ApplicationController
-  before_action :find_list, only: [:update, :destroy]
+  before_action :find_list, only: [:show, :update, :destroy]
 
   def index
     @lists = List.all
     render json: @lists
+  end
+
+  def show
+    render json: @list
   end
 
   def create
@@ -34,8 +38,19 @@ class Api::V1::ListsController < ApplicationController
     end
     @list.books << @book
     render json: @list
+  end
 
-    # STRETCH: if the book exists in their db, remove it from their former list and add it to the new list
+  def change_list
+    # byebug
+    @list = List.find(params[:list][:id])
+    @book = Book.find(params[:book_id])
+    @book.list = @list
+    byebug
+    # @list.books << @book
+    render json: @list
+  end
+
+  def remove_book
   end
 
 
