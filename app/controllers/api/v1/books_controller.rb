@@ -12,8 +12,8 @@ class Api::V1::BooksController < ApplicationController
   end
 
   def update
-    list = List.find(params[:list_id])
-    @book.update(:list => list)
+    list = List.find_by(user_id: params[:user_id], title: params[:title])
+    @book.update(list: list)
 
     render json: @book
   end
@@ -30,6 +30,6 @@ class Api::V1::BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:google_id, :title, :authors, :cover_url, :list_id) #:author, :genre,
+    params.require(:book).permit(:google_id, :title, :authors, :cover_url, :description, :list_id) #:author, :genre,
   end
 end

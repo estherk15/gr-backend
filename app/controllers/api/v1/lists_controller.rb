@@ -29,23 +29,23 @@ class Api::V1::ListsController < ApplicationController
   end
 
   def add_book
-    # byebug
-    @list = List.all.find_by(:id == params[:id])
+
+    @list = List.all.find_by(user_id: params[:user_id], title: params[:list][:title])
     @book = Book.all.find_or_create_by(google_id: params[:google_id]) do |book| #find a book by unique google id, if it doesn't exist, create it with the following attributes/params.
       book.title = params[:title]
       book.authors = params[:authors]
       book.cover_url = params[:cover_url]
+      book.description = params[:description]
     end
     @list.books << @book
     render json: @list
   end
 
   def change_list
-    # byebug
-    @list = List.find(params[:list][:id])
+    byebug
+    @list = List.find_by(user_id:params[:user_id], title: params[:list][:title])
     @book = Book.find(params[:book_id])
     @book.list = @list
-    byebug
     # @list.books << @book
     render json: @list
   end

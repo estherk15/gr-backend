@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 # u = User.create(name: ENV['USER'])
-u = User.create(username: "Esther", password: '123')
+# u = User.create(username: "Esther", password: '123')
 # b = Book.find
 
 List.destroy_all
-List.create(user_id: u.id, title: "Currently Reading")
-List.create(user_id: u.id, title: "Want to Read")
-List.create(user_id: u.id, title: "Read")
+# List.create(user_id: u.id, title: "Currently Reading")
+# List.create(user_id: u.id, title: "Want to Read")
+# List.create(user_id: u.id, title: "Read")
 
 Book.destroy_all
 # 20.times do

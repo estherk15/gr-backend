@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_03_03_030329) do
     t.string "title"
     t.string "authors", default: [], array: true
     t.string "cover_url"
+    t.text "description"
     t.bigint "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
