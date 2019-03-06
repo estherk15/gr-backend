@@ -13,7 +13,12 @@ class Book < ApplicationRecord
    end
 
    def snippet
-     return self.description.slice(0, 500) + "..."
+     description = self.description.slice(0, 500)+ "..."
+     # if description.length > 500
+     #   return description + "..."
+     # else
+     #   description
+     # end
    end
 
 end

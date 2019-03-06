@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 2019_03_03_030329) do
   create_table "books", force: :cascade do |t|
     t.string "google_id"
     t.string "title"
-    t.string "authors", default: [], array: true
+    t.string "authors"
     t.string "cover_url"
     t.text "description"
+    t.string "info_link"
     t.bigint "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
