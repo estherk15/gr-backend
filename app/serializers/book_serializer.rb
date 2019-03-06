@@ -3,3 +3,4 @@ class BookSerializer < ActiveModel::Serializer
   # belongs_to :list
 
 end
+u
