@@ -34,8 +34,16 @@ class Api::V1::UsersController < ApplicationController
 
   def add_default_lists
     # byebug
-    default_list = [{user_id: @user.id, title: "Currently Reading"}, {user_id: @user.id, title: "Want to Read"}, {user_id: @user.id, title: "Read"}]
+    default_list = [{user_id: @user.id, title: "Currently Reading"},
+                    {user_id: @user.id, title: "Want to Read"},
+                    {user_id: @user.id, title: "Read"}]
     default_list.each{|list| List.create(list)}
+  end
+
+  def user_books
+    @user = User.find(params[:id])
+    @books = @user.books
+    render json: @books
   end
 
   private

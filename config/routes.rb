@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       post '/login', to: 'users#login'
       patch '/add_book', to: 'lists#add_book'
       patch '/change_list', to: 'lists#change_list'
-      patch '/remove_book', to: 'lists#remove_book'
+      get 'users/:id/books', to: 'users#user_books'
     end
   end
 end
