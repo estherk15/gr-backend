@@ -7,9 +7,9 @@ class ListSerializer < ActiveModel::Serializer
   #   return "whatever"
   # end
 
-  belongs_to :user
-  # has_many :book_lists
-  has_many :books #through: :book_lists
+  # belongs_to :user
+  # # has_many :book_lists
+  # has_many :books #through: :book_lists
 
 
 end

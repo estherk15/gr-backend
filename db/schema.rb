@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2019_02_20_203524) do
     t.bigint "user_id"
     t.string "title"
     t.string "content"
-    t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_responses_on_book_id"
@@ -55,12 +54,13 @@ ActiveRecord::Schema.define(version: 2019_02_20_203524) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "bio"
+    t.string "username"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "book_lists", "books"
   add_foreign_key "book_lists", "lists"
+  add_foreign_key "lists", "users"
 end

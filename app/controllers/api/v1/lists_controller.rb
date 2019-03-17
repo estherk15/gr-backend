@@ -24,6 +24,12 @@ class Api::V1::ListsController < ApplicationController
     redirect_to api_v1_lists_path
   end
 
+  def changeList
+    bookId = book_params["book_id"].to_i
+    @book = Book.find(bookId)
+    @list.books << @tag
+  end
+
   private
 
   def find_list

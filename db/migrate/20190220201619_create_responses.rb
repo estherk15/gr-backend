@@ -5,8 +5,7 @@ class CreateResponses < ActiveRecord::Migration[5.2]
       t.belongs_to :user, index: true
       t.string :title
       t.string :content
-      t.integer :rating
-
+    
       t.timestamps
     end
   end
