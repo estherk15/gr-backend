@@ -18,8 +18,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def login #custom route to login an existing user
-    @user = User.all.find_by(username: params[:username])
-     #Search User db to see if a user exists
+    @user = User.all.find_by(username: params[:username]) #Search User db to see if a user exists
     if @user.nil? #is the entered username in the db?
       render json: {error: "Username not found"} #if not, render the error
     else
@@ -34,8 +33,16 @@ class Api::V1::UsersController < ApplicationController
 
   def add_default_lists
     # byebug
-    default_list = [{user_id: @user.id, title: "Currently Reading"}, {user_id: @user.id, title: "Want to Read"}, {user_id: @user.id, title: "Read"}]
+    default_list = [{user_id: @user.id, title: "Currently Reading"},
+                    {user_id: @user.id, title: "Want to Read"},
+                    {user_id: @user.id, title: "Read"}]
     default_list.each{|list| List.create(list)}
+  end
+
+  def user_books
+    @user = User.find(params[:id])
+    @books = @user.books
+    render json: @books
   end
 
   private
@@ -49,3 +56,5 @@ class Api::V1::UsersController < ApplicationController
   end
 
 end # class
+
+# Change login method when using bcrypt to authenticate user
