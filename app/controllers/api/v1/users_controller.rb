@@ -11,7 +11,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    # byebug
     @user = User.create(user_params)
     add_default_lists #references method that will create default lists for user
     render json: @user
