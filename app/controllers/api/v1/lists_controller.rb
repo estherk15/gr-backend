@@ -23,15 +23,11 @@ class Api::V1::ListsController < ApplicationController
     end
   end
 
-  def destroy
-    @list.destroy
-    redirect_to api_v1_lists_path
-  end
-
   def add_book
     # byebug
     @list = List.all.find_by(user_id: params[:user_id], title: params[:list][:title])
-    @book = Book.all.find_or_create_by(google_id: params[:google_id]) do |book| #find a book by unique google id, if it doesn't exist, create it with the following attributes/params.
+    @book = Book.all.find_or_create_by(google_id: params[:google_id]) do |book|
+      #find a book by unique google id, if it doesn't exist, create it with the following attributes/params.
       book.title = params[:title]
       book.authors = params[:authors]
       book.cover_url = params[:cover_url]
@@ -39,7 +35,6 @@ class Api::V1::ListsController < ApplicationController
       book.info_link = params[:info_link]
     end
     @list.books << @book
-    # byebug
     render json: @list
   end
 
@@ -48,13 +43,12 @@ class Api::V1::ListsController < ApplicationController
     @list = List.find_by(user_id:params[:user_id], title: params[:list][:title])
     @book = Book.find(params[:book_id])
     @book.list = @list
-    # @list.books << @book
     render json: @list
   end
 
-  def remove_book
-  end
-
+  # def remove_book
+  # end
+  # How can you remove a book from a list without removing a book from the db?
 
   private
 

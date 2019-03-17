@@ -18,8 +18,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def login #custom route to login an existing user
-    @user = User.all.find_by(username: params[:username])
-     #Search User db to see if a user exists
+    @user = User.all.find_by(username: params[:username]) #Search User db to see if a user exists
     if @user.nil? #is the entered username in the db?
       render json: {error: "Username not found"} #if not, render the error
     else
@@ -57,3 +56,5 @@ class Api::V1::UsersController < ApplicationController
   end
 
 end # class
+
+# Change login method when using bcrypt to authenticate user
