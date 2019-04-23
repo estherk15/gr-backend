@@ -31,7 +31,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def add_default_lists
-    # byebug
     default_list = [{user_id: @user.id, title: "Currently Reading"},
                     {user_id: @user.id, title: "Want to Read"},
                     {user_id: @user.id, title: "Read"}]
